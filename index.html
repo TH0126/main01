@@ -813,7 +813,7 @@
                     tlf23.classList.replace("tlife2-3", "tlost2-3");
                     window.setTimeout(function () {
                         tdmg2.style.visibility = "hidden";
-                        busyo2.classList.add("red");
+                        tbusyo2.classList.add("red");
                     }, 500);
                 }
             } else {
@@ -821,32 +821,69 @@
             //敵の攻撃（左翼）
             if (t_t2_atk - s_t2_def > 0) {
                 //味方にダメージ
-                dmg2.style.visibility = "visible";
-                slf21.classList.replace("life2-1", "lost2-1");
-                window.setTimeout(function () {
-                    dmg2.style.visibility = "hidden";
-                }, 500);
+                if (lifegage2 === 0) {
+                    dmg2.style.visibility = "visible";
+                    slf21.classList.replace("life2-1", "lost2-1");
+                    window.setTimeout(function () {
+                        dmg2.style.visibility = "hidden";
+                    }, 500);
+                } else if (lifegage2 === 1) {
+                    dmg2.style.visibility = "visible";
+                    slf22.classList.replace("life2-2", "lost2-2");
+                    window.setTimeout(function () {
+                        dmg2.style.visibility = "hidden";
+                    }, 500);
+                } else if (lifegage2 === 2) {
+                    dmg2.style.visibility = "visible";
+                    slf23.classList.replace("life2-3", "lost2-3");
+                    window.setTimeout(function () {
+                        dmg2.style.visibility = "hidden";
+                        busyo2.classList.add("red");
+                    }, 500);
+                }
             } else {
             }
 
             //味方の攻撃（右翼）
             if (s_t3_atk - t_t3_def > 0) {
-                //右翼で敵にダメージ
-                tdmg3.style.visibility = "visible";
-                tlf31.classList.replace("tlife3-1", "tlost3-1");
-                window.setTimeout(function () {
-                    tdmg3.style.visibility = "hidden";
-                }, 500);
+                //敵にダメージ
+                if (tlifegage3 === 0) {
+                    tdmg3.style.visibility = "visible";
+                    tlf31.classList.replace("tlife3-1", "tlost3-1");
+                    window.setTimeout(function () {
+                        tdmg3.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage3 === 1) {
+                    tdmg3.style.visibility = "visible";
+                    tlf32.classList.replace("tlife3-2", "tlost3-2");
+                    window.setTimeout(function () {
+                        tdmg3.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage3 === 2) {
+                    tdmg3.style.visibility = "visible";
+                    tlf33.classList.replace("tlife3-3", "tlost3-3");
+                    window.setTimeout(function () {
+                        tdmg3.style.visibility = "hidden";
+                        tbusyo3.classList.add("red");
+                    }, 500);
+                }
             } else {
             }
             //敵の攻撃（右翼）
             if (t_t3_atk - s_t3_def > 0) {
+                //味方にダメージ
+                if (lifegage3 === 0) {
+
+                } else if (lifegage3 === 1) {
+
+                } else if (lifegage3 === 2) {
+
+                }
                 dmg3.style.visibility = "visible";
                 slf31.classList.replace("life3-1", "lost3-1");
                 window.setTimeout(function () {
                     dmg3.style.visibility = "hidden";
                 }, 500);
-                //中央で味方にダメージ
             } else {
             }
             //カウントアップ
