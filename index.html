@@ -790,6 +790,7 @@
                         busyo1.classList.add("red");
                     }, 500);
                 }
+                lifegage1++;
             } else {
             }
 
@@ -816,6 +817,7 @@
                         tbusyo2.classList.add("red");
                     }, 500);
                 }
+                tlifegage2++;
             } else {
             }
             //敵の攻撃（左翼）
@@ -841,6 +843,7 @@
                         busyo2.classList.add("red");
                     }, 500);
                 }
+                lifegage2++;
             } else {
             }
 
@@ -867,23 +870,33 @@
                         tbusyo3.classList.add("red");
                     }, 500);
                 }
+                tlifegage3++;
             } else {
             }
             //敵の攻撃（右翼）
             if (t_t3_atk - s_t3_def > 0) {
                 //味方にダメージ
                 if (lifegage3 === 0) {
-
+                    dmg3.style.visibility = "visible";
+                    slf31.classList.replace("life3-1", "lost3-1");
+                    window.setTimeout(function () {
+                        dmg3.style.visibility = "hidden";
+                    }, 500);
                 } else if (lifegage3 === 1) {
-
+                    dmg3.style.visibility = "visible";
+                    slf32.classList.replace("life3-2", "lost3-2");
+                    window.setTimeout(function () {
+                        dmg3.style.visibility = "hidden";
+                    }, 500);
                 } else if (lifegage3 === 2) {
-
+                    dmg3.style.visibility = "visible";
+                    slf33.classList.replace("life3-3", "lost3-3");
+                    window.setTimeout(function () {
+                        dmg3.style.visibility = "hidden";
+                        busyo3.classList.add("red");
+                    }, 500);
                 }
-                dmg3.style.visibility = "visible";
-                slf31.classList.replace("life3-1", "lost3-1");
-                window.setTimeout(function () {
-                    dmg3.style.visibility = "hidden";
-                }, 500);
+                lifegage3++;
             } else {
             }
             //カウントアップ
