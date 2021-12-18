@@ -1,0 +1,633 @@
+
+/*全体　共通
+最初から設定してあるので特に変更
+しなくても大丈夫です♪
+-----------------*/
+body{
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	line-height: 1.75;
+	font-size: 16px;
+}
+
+
+/*　パディングをサイズ内側にする処理　*/
+* {
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*ーーーーーーーーーーー*/
+/*この下から記述*/
+/*ーーーーーーーーーーー*/
+.fight-space {
+	width: 1530px;
+	height: 600px;
+	background-color: black;
+	position: relative;
+}
+#space {
+	position: absolute;
+	width: 950px;
+	height: 500px;
+	top: 10%;
+	left: 36%;
+	transform: translate(-30%);
+}
+#busyo-1 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 35%;
+	left: 20%;
+	transform: translate(-20%);
+}
+.red {
+	filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
+}
+#busyo-2 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 5%;
+	left: 8%;
+	transform: translate(-20%);
+}
+#busyo-3 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 65%;
+	left: 8%;
+	transform: translate(-20%);
+}
+#kizu-1 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 35%;
+	left: 19%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#kizu-2 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 5%;
+	left: 7%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#kizu-3 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 65%;
+	left: 7%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#sin-f {
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	top: 40%;
+	left: 3%;
+	transform: translate(-20%);
+}
+#butai-1 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 42%;
+	left: 28%;
+	transform: translate(-20%);
+	transform: rotate(90deg);
+}
+#butai-2 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 12%;
+	left: 16%;
+	transform: translate(-20%);
+	transform: rotate(90deg);
+}
+#butai-3 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 72%;
+	left: 16%;
+	transform: translate(-20%);
+	transform: rotate(90deg);
+}
+#teki-1 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 35%;
+	left: 72%;
+	transform: translate(-20%);
+}
+#teki-2 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 5%;
+	left: 84%;
+	transform: translate(-20%);
+}
+#teki-3 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 65%;
+	left: 84%;
+	transform: translate(-20%);
+}
+#tkizu-1 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 35%;
+	left: 71%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#tkizu-2 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 5%;
+	left: 83%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#tkizu-3 {
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	top: 65%;
+	left: 83%;
+	transform: translate(-20%);
+	transform: rotate(55deg);
+}
+#teki-f {
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	top: 40%;
+	left: 88%;
+	transform: translate(-20%);
+}
+#t-butai-1 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 42%;
+	left: 64%;
+	transform: translate(-20%);
+	transform: rotate(-90deg);
+}
+#t-butai-2 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 12%;
+	left: 76%;
+	transform: translate(-20%);
+	transform: rotate(-90deg);
+}
+#t-butai-3 {
+	position: absolute;
+	width: 60px;
+	height: 90px;
+	top: 72%;
+	left: 76%;
+	transform: translate(-20%);
+	transform: rotate(-90deg);
+}
+#kaisen {
+	position: absolute;
+	width: 400px;
+	height: 200px;
+	top: 33%;
+	left: 41%;
+	transform: translate(-20%);
+}
+#kaisen:hover {
+	/* リンクをホバーしたときのカーソルにする。 */
+	cursor: pointer;
+}
+#kaisen:active {
+	position: relative;
+	top: 200px;
+}
+.life1-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 38%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.life1-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 48%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.life1-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 58%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.life2-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 8%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.life2-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 18%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.life2-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 28%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.life3-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 68%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.life3-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 78%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.life3-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 88%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.tlife1-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 38%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlife1-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 48%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlife1-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 58%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlife2-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 8%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlife2-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 18%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlife2-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 28%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlife3-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 68%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlife3-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 78%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlife3-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+  	background: firebrick;
+  	border-radius: 50%;	
+	top: 88%;
+	left: 92%;
+	transform: translate(-20%);
+}
+
+.lost1-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 38%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.lost1-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 48%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.lost1-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 58%;
+	left: 16%;
+	transform: translate(-20%);
+}
+.lost2-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 8%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.lost2-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 18%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.lost2-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 28%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.lost3-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 68%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.lost3-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 78%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.lost3-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 88%;
+	left: 4%;
+	transform: translate(-20%);
+}
+.tlost1-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 38%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlost1-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 48%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlost1-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 58%;
+	left: 80%;
+	transform: translate(-20%);
+}
+.tlost2-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 8%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlost2-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 18%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlost2-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 28%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlost3-1 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 68%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlost3-2 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 78%;
+	left: 92%;
+	transform: translate(-20%);
+}
+.tlost3-3 {
+	position: absolute;
+  	width: 20px;
+  	height: 20px;
+	background-color: whitesmoke;
+	border: 3px firebrick solid;
+  	border-radius: 50%;	
+	top: 88%;
+	left: 92%;
+	transform: translate(-20%);
+}
+/*どの部分のcssに対して
+命令をしているのかコメントを
+記載しよう！
+---------------------*/
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/
+
+
+
+/*
+---------------------*/

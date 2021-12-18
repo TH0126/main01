@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>キングダム</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <section class="fight-space">
+        <img id="sin-f" src="./img/sin_flag.jpg" alt="">
+        <img id="space"></img>
+        <img id="busyo-1"></img>
+        <img id="busyo-2"></img>
+        <img id="busyo-3"></img>
+        <img id="kizu-1" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="kizu-2" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="kizu-3" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="butai-1" style="visibility:hidden;"></img>
+        <img id="butai-2" style="visibility:hidden;"></img>
+        <img id="butai-3" style="visibility:hidden;"></img>
+        <img id="teki-f" style="visibility:hidden;"></img>
+        <img id="teki-1"></img>
+        <img id="teki-2"></img>
+        <img id="teki-3"></img>
+        <img id="tkizu-1" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="tkizu-2" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="tkizu-3" src="./img/kizu.png" style="visibility:hidden;">
+        <img id="t-butai-1" style="visibility:hidden;"></img>
+        <img id="t-butai-2" style="visibility:hidden;"></img>
+        <img id="t-butai-3" style="visibility:hidden;"></img>
+        <img id="kaisen" src="./img/kaisen.jpg" alt="">
+        <p id="lf1-1" class="life1-1"></p>
+        <p id="lf1-2" class="life1-2"></p>
+        <p id="lf1-3" class="life1-3"></p>
+        <p id="lf2-1" class="life2-1"></p>
+        <p id="lf2-2" class="life2-2"></p>
+        <p id="lf2-3" class="life2-3"></p>
+        <p id="lf3-1" class="life3-1"></p>
+        <p id="lf3-2" class="life3-2"></p>
+        <p id="lf3-3" class="life3-3"></p>
+        <p id="tlf1-1" class="tlife1-1"></p>
+        <p id="tlf1-2" class="tlife1-2"></p>
+        <p id="tlf1-3" class="tlife1-3"></p>
+        <p id="tlf2-1" class="tlife2-1"></p>
+        <p id="tlf2-2" class="tlife2-2"></p>
+        <p id="tlf2-3" class="tlife2-3"></p>
+        <p id="tlf3-1" class="tlife3-1"></p>
+        <p id="tlf3-2" class="tlife3-2"></p>
+        <p id="tlf3-3" class="tlife3-3"></p>
+    </section>
+    <button type="button" id="space-btn">戦場を決める</button>
+    <button type="button" id="busyo-btn">武将を決める</button>
+    <select id="buki1" size=1>
+        <option value="">中央の部隊を選択</option>
+        <option value="1-1">剣隊</option>
+        <option value="1-2">槍隊</option>
+        <option value="1-3">弓隊</option>
+    </select>
+    <select id="buki2" size=1>
+        <option value="">右翼の部隊を選択</option>
+        <option value="2-1">剣隊</option>
+        <option value="2-2">槍隊</option>
+        <option value="2-3">弓隊</option>
+    </select>
+    <select id="buki3" size=1>
+        <option value="">左翼の部隊を選択</option>
+        <option value="3-1">剣隊</option>
+        <option value="3-2">槍隊</option>
+        <option value="3-3">弓隊</option>
+    </select>
+    <button type="button" id="butai-btn">部隊決定</button>
+    <button type="button" id="teki-btn">相手は？</button>
+
+    <script>
+        let spaceArry = [
+            "./img/sougen.jpg",
+            "./img/siro.jpg",
+            "./img/sangaku.jpg"
+        ];
+        let busyoArry = [
+            "./img/kansin-sinkoku.png",
+            "./img/ouki-sinkoku.png",
+            "./img/kanki-sinkoku.jpg"
+        ];
+        let butaiArry = [
+            "./img/sword-re.png",
+            "./img/spear-re.png",
+            "./img/longbow-re.png"
+        ];
+        let teki1Arry = [
+            "./img/riboku.jpg",
+            "./img/gokei.png",
+        ];
+        let teki2Arry = [
+            "./img/tyoubusyo1.jpg",
+            "./img/gibusyo1_.jpg",
+        ];
+        let teki3Arry = [
+            "./img/tyoubusyo2.jpg",
+            "./img/gibusyo2.png",
+        ];
+        let tekifArry = [
+            "./img/tyou_flag.jpg",
+            "./img/gi_flag.jpg",
+        ];
+
+
+        // 戦場を決める
+        const fspace = document.getElementById("space");
+        const spacebtn = document.getElementById("space-btn");
+
+        //武将を決める
+        const busyo1 = document.getElementById("busyo-1");
+        const busyo2 = document.getElementById("busyo-2");
+        const busyo3 = document.getElementById("busyo-3");
+        const busyobtn = document.getElementById("busyo-btn");
+
+        //部隊を決める
+        const butai1 = document.getElementById("butai-1");
+        const butai2 = document.getElementById("butai-2");
+        const butai3 = document.getElementById("butai-3");
+        const butaibtn = document.getElementById("butai-btn");
+
+        //敵国を決める
+        const tflag = document.getElementById("teki-f");
+        const tbusyo1 = document.getElementById("teki-1");
+        const tbusyo2 = document.getElementById("teki-2");
+        const tbusyo3 = document.getElementById("teki-3");
+        const tbutai1 = document.getElementById("t-butai-1");
+        const tbutai2 = document.getElementById("t-butai-2");
+        const tbutai3 = document.getElementById("t-butai-3");
+        const tekibtn = document.getElementById("teki-btn");
+
+        const kaisenbtn = document.getElementById("kaisen");
+
+        //生命力
+        const slf11 = document.getElementById("lf1-1");
+        const slf12 = document.getElementById("lf1-2");
+        const slf13 = document.getElementById("lf1-3");
+        const slf21 = document.getElementById("lf2-1");
+        const slf22 = document.getElementById("lf2-2");
+        const slf23 = document.getElementById("lf2-3");
+        const slf31 = document.getElementById("lf3-1");
+        const slf32 = document.getElementById("lf3-2");
+        const slf33 = document.getElementById("lf3-3");
+
+        const tlf11 = document.getElementById("tlf1-1");
+        const tlf12 = document.getElementById("tlf1-2");
+        const tlf13 = document.getElementById("tlf1-3");
+        const tlf21 = document.getElementById("tlf2-1");
+        const tlf22 = document.getElementById("tlf2-2");
+        const tlf23 = document.getElementById("tlf2-3");
+        const tlf31 = document.getElementById("tlf3-1");
+        const tlf32 = document.getElementById("tlf3-2");
+        const tlf33 = document.getElementById("tlf3-3");
+
+        //ダメージ
+        const dmg1 = document.getElementById("kizu-1");
+        const dmg2 = document.getElementById("kizu-2");
+        const dmg3 = document.getElementById("kizu-3");
+        const tdmg1 = document.getElementById("tkizu-1");
+        const tdmg2 = document.getElementById("tkizu-2");
+        const tdmg3 = document.getElementById("tkizu-3");
+
+        //各種ステータス
+        //攻撃力
+        let s_atk = 0;
+        let t_atk = 0;
+        //防御力
+        let s_def = 0;
+        let t_def = 0;
+        //武力
+        let s1_pow = 0;
+        let s2_pow = 0;
+        let s3_pow = 0;
+        let t1_pow = 0;
+        let t2_pow = 0;
+        let t3_pow = 0;
+        //部隊の種類
+        let s1_type = "";
+        let s2_type = "";
+        let s3_type = "";
+        let t1_type = "";
+        let t2_type = "";
+        let t3_type = "";
+
+        //生命力ゲージ
+        let lifegage1 = 0;
+        let lifegage2 = 0;
+        let lifegage3 = 0;
+        let tlifegage1 = 0;
+        let tlifegage2 = 0;
+        let tlifegage3 = 0;
+
+        //初回フラグ
+        let f_flag = 0;
+
+        fspace.src = spaceArry[0];
+        busyo1.src = "./img/Honey-cam-bs.gif";
+        busyo2.src = "./img/Honey-cam-bs.gif";
+        busyo3.src = "./img/Honey-cam-bs.gif";
+
+        tbusyo1.src = "./img/Honey-cam-bs.gif";
+        tbusyo2.src = "./img/Honey-cam-bs.gif";
+        tbusyo3.src = "./img/Honey-cam-bs.gif";
+
+        // 戦場を決める
+        spacebtn.addEventListener("click", function () {
+            if (spacebtn.textContent === "戦場を決める") {
+                spacebtn.textContent = "ストップ"
+                timerId = setInterval(() => {
+                    let spaceIndex = Math.floor(Math.random() * spaceArry.length);
+                    fspace.src = spaceArry[spaceIndex];
+                }, 200);
+            } else {
+                spacebtn.textContent = "戦場を決める";
+
+                //戦場による攻撃力と防御力を決める
+                if (fspace.src.indexOf("sougen") > -1) {
+                    //攻撃力
+                    s_atk = 2;
+                    t_atk = 1;
+
+                    //防御力
+                    s_def = 0;
+                    t_def = 1;
+                } else if (fspace.src.indexOf("siro") > -1) {
+                    //攻撃力
+                    s_atk = 1;
+                    t_atk = -1;
+
+                    //防御力
+                    s_def = 0;
+                    t_def = 2;
+                } else if (fspace.src.indexOf("sangaku") > -1) {
+                    //攻撃力
+                    s_atk = 1;
+                    t_atk = 2;
+
+                    //防御力
+                    s_def = 1;
+                    t_def = 0;
+                } else {
+                }
+                clearInterval(timerId);
+            }
+        });
+
+        //武将を決める
+        busyobtn.addEventListener("click", function () {
+            if (busyobtn.textContent === "武将を決める") {
+                busyobtn.textContent = "ストップ"
+                timerId = setInterval(() => {
+                    let busyo1Index = Math.floor(Math.random() * busyoArry.length);
+                    let busyo2Index = Math.floor(Math.random() * busyoArry.length);
+                    let busyo3Index = Math.floor(Math.random() * busyoArry.length);
+                    busyo1.src = busyoArry[busyo1Index];
+                    busyo2.src = busyoArry[busyo2Index];
+                    busyo3.src = busyoArry[busyo3Index];
+
+                    //武将個々の能力を決める
+                    if (busyo1.src.indexOf("kansin") > -1) {
+                        //武力
+                        s1_pow = 2;
+                    } else if (busyo1.src.indexOf("kanki") > -1) {
+                        //武力
+                        s1_pow = 3;
+                    } else if (busyo1.src.indexOf("ouki") > -1) {
+                        //武力
+                        s1_pow = 4;
+                    } else {
+                    }
+
+                    if (busyo2.src.indexOf("kansin") > -1) {
+                        //武力
+                        s2_pow = 2;
+                    } else if (busyo2.src.indexOf("kanki") > -1) {
+                        //武力
+                        s2_pow = 3;
+                    } else if (busyo2.src.indexOf("ouki") > -1) {
+                        //武力
+                        s2_pow = 4;
+                    } else {
+                    }
+
+                    if (busyo3.src.indexOf("kansin") > -1) {
+                        //武力
+                        s3_pow = 2;
+                    } else if (busyo3.src.indexOf("kanki") > -1) {
+                        //武力
+                        s3_pow = 3;
+                    } else if (busyo3.src.indexOf("ouki") > -1) {
+                        //武力
+                        s3_pow = 4;
+                    } else {
+                    }
+
+                }, 200);
+            } else {
+                busyobtn.textContent = "武将を決める";
+                clearInterval(timerId);
+            }
+        });
+
+        //部隊を決める
+        butaibtn.addEventListener("click", function () {
+
+            const butai1_val = document.getElementById("buki1").value;
+            const butai2_val = document.getElementById("buki2").value;
+            const butai3_val = document.getElementById("buki3").value;
+
+            if (butai1_val === "1-1") {
+                butai1.src = butaiArry[0];
+                s1_type = "Ken"
+                butai1.style.visibility = "visible";
+            } else if (butai1_val === "1-2") {
+                butai1.src = butaiArry[1];
+                s1_type = "Spe"
+                butai1.style.visibility = "visible";
+            } else if (butai1_val === "1-3") {
+                butai1.src = butaiArry[2];
+                s1_type = "Bow"
+                butai1.style.visibility = "visible";
+            } else {
+
+            }
+
+            if (butai2_val === "2-1") {
+                butai2.src = butaiArry[0];
+                s2_type = "Ken"
+                butai2.style.visibility = "visible";
+            } else if (butai2_val === "2-2") {
+                butai2.src = butaiArry[1];
+                s2_type = "Spe"
+                butai2.style.visibility = "visible";
+            } else if (butai2_val === "2-3") {
+                butai2.src = butaiArry[2];
+                s2_type = "Bow"
+                butai2.style.visibility = "visible";
+            } else {
+
+            }
+
+            if (butai3_val === "3-1") {
+                butai3.src = butaiArry[0];
+                s3_type = "Ken"
+                butai3.style.visibility = "visible";
+            } else if (butai3_val === "3-2") {
+                butai3.src = butaiArry[1];
+                s3_type = "Spe"
+                butai3.style.visibility = "visible";
+            } else if (butai3_val === "3-3") {
+                butai3.src = butaiArry[2];
+                s3_type = "Bow"
+                butai3.style.visibility = "visible";
+            } else {
+
+            }
+
+        });
+
+        //敵国を決める
+        tekibtn.addEventListener("click", function () {
+            if (tekibtn.textContent === "相手は？") {
+                tekibtn.textContent = "ストップ"
+                timerId = setInterval(() => {
+                    let tekiIndex = Math.floor(Math.random() * tekifArry.length);
+                    let tbutai1Index = Math.floor(Math.random() * butaiArry.length);
+                    let tbutai2Index = Math.floor(Math.random() * butaiArry.length);
+                    let tbutai3Index = Math.floor(Math.random() * butaiArry.length);
+                    tflag.src = tekifArry[tekiIndex];
+                    tflag.style.visibility = "visible";
+                    tbusyo1.src = teki1Arry[tekiIndex];
+                    tbusyo2.src = teki2Arry[tekiIndex];
+                    tbusyo3.src = teki3Arry[tekiIndex];
+                    tbutai1.src = butaiArry[tbutai1Index];
+                    tbutai1.style.visibility = "visible";
+                    tbutai2.src = butaiArry[tbutai2Index];
+                    tbutai2.style.visibility = "visible";
+                    tbutai3.src = butaiArry[tbutai3Index];
+                    tbutai3.style.visibility = "visible";
+
+                    //武将個々の能力を決める
+                    if (tflag.src.indexOf("gi_flag") > -1) {
+                        //魏の場合
+                        t1_pow = 3;
+                        t2_pow = 2;
+                        t3_pow = 1;
+                    } else if (tflag.src.indexOf("tyou_flag") > -1) {
+                        //趙の場合
+                        t1_pow = 4;
+                        t2_pow = 3;
+                        t3_pow = 2;
+                    } else {
+                    }
+
+                    //各部隊の設定をする
+                    //中央
+                    if (tbutai1.src.indexOf("sword") > -1) {
+                        //剣の場合
+                        t1_type = "Ken";
+                    } else if (tbutai1.src.indexOf("spear") > -1) {
+                        //槍の場合
+                        t1_type = "Spe";
+                    } else if (tbutai1.src.indexOf("longbow") > -1) {
+                        //弓の場合
+                        t1_type = "Bow";
+                    } else {
+                    }
+                    //左翼
+                    if (tbutai2.src.indexOf("sword") > -1) {
+                        //剣の場合
+                        t2_type = "Ken";
+                    } else if (tbutai2.src.indexOf("spear") > -1) {
+                        //槍の場合
+                        t2_type = "Spe";
+                    } else if (tbutai2.src.indexOf("longbow") > -1) {
+                        //弓の場合
+                        t2_type = "Bow";
+                    } else {
+                    }
+                    //右翼
+                    if (tbutai3.src.indexOf("sword") > -1) {
+                        //剣の場合
+                        t3_type = "Ken";
+                    } else if (tbutai3.src.indexOf("spear") > -1) {
+                        //槍の場合
+                        t3_type = "Spe";
+                    } else if (tbutai3.src.indexOf("longbow") > -1) {
+                        //弓の場合
+                        t3_type = "Bow";
+                    } else {
+                    }
+
+                }, 200);
+            } else {
+                tekibtn.textContent = "相手は？";
+                clearInterval(timerId);
+            }
+        });
+
+        //開戦処理
+        kaisenbtn.addEventListener("click", function () {
+            //2回目以降処理
+            if (f_flag > 0) {
+                let t2butai1Index = Math.floor(Math.random() * butaiArry.length);
+                let t2butai2Index = Math.floor(Math.random() * butaiArry.length);
+                let t2butai3Index = Math.floor(Math.random() * butaiArry.length);
+                tbutai1.src = butaiArry[t2butai1Index];
+                tbutai2.src = butaiArry[t2butai2Index];
+                tbutai3.src = butaiArry[t2butai3Index];
+
+                //各部隊の設定をする
+                //中央
+                if (tbutai1.src.indexOf("sword") > -1) {
+                    //剣の場合
+                    t1_type = "Ken";
+                } else if (tbutai1.src.indexOf("spear") > -1) {
+                    //槍の場合
+                    t1_type = "Spe";
+                } else if (tbutai1.src.indexOf("longbow") > -1) {
+                    //弓の場合
+                    t1_type = "Bow";
+                } else {
+                }
+                //左翼
+                if (tbutai2.src.indexOf("sword") > -1) {
+                    //剣の場合
+                    t2_type = "Ken";
+                } else if (tbutai2.src.indexOf("spear") > -1) {
+                    //槍の場合
+                    t2_type = "Spe";
+                } else if (tbutai2.src.indexOf("longbow") > -1) {
+                    //弓の場合
+                    t2_type = "Bow";
+                } else {
+                }
+                //右翼
+                if (tbutai3.src.indexOf("sword") > -1) {
+                    //剣の場合
+                    t3_type = "Ken";
+                } else if (tbutai3.src.indexOf("spear") > -1) {
+                    //槍の場合
+                    t3_type = "Spe";
+                } else if (tbutai3.src.indexOf("longbow") > -1) {
+                    //弓の場合
+                    t3_type = "Bow";
+                } else {
+                }
+            }
+
+            //初期設定
+            let s_t1_atk = 0;
+            let s_t2_atk = 0;
+            let s_t3_atk = 0;
+            let s_t1_def = 0;
+            let s_t2_def = 0;
+            let s_t3_def = 0;
+            let t_t1_atk = 0;
+            let t_t2_atk = 0;
+            let t_t3_atk = 0;
+            let t_t1_def = 0;
+            let t_t2_def = 0;
+            let t_t3_def = 0;
+            //敵味方の攻撃・防御処理
+            //中央（１）
+            if (s1_type === "Ken") {
+                if (t1_type === "Ken") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 0;
+                    t_t1_atk = t_atk + t1_pow + 0;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 0;
+                    t_t1_def = t_def + s1_pow + 0;
+                } else if (t1_type === "Spe") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow - 2;
+                    t_t1_atk = t_atk + t1_pow + 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow - 1;
+                    t_t1_def = t_def + s1_pow + 1;
+                } else if (t1_type === "Bow") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 2;
+                    t_t1_atk = t_atk + t1_pow - 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 1;
+                    t_t1_def = t_def + s1_pow - 1;
+                } else {
+                }
+            } else if (s1_type === "Spe") {
+                if (t1_type === "Ken") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 2;
+                    t_t1_atk = t_atk + t1_pow - 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 1;
+                    t_t1_def = t_def + s1_pow - 1;
+                } else if (t1_type === "Spe") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 0;
+                    t_t1_atk = t_atk + t1_pow + 0;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 0;
+                    t_t1_def = t_def + s1_pow + 0;
+                } else if (t1_type === "Bow") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow - 2;
+                    t_t1_atk = t_atk + t1_pow + 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow - 1;
+                    t_t1_def = t_def + s1_pow + 1;
+                } else {
+                }
+            } else if (s1_type === "Bow") {
+                if (t1_type === "Ken") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow - 2;
+                    t_t1_atk = t_atk + t1_pow + 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow - 1;
+                    t_t1_def = t_def + s1_pow + 1;
+                } else if (t1_type === "Spe") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 2;
+                    t_t1_atk = t_atk + t1_pow - 2;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 1;
+                    t_t1_def = t_def + s1_pow - 1;
+                } else if (t1_type === "Bow") {
+                    //合計攻撃力
+                    s_t1_atk = s_atk + s1_pow + 0;
+                    t_t1_atk = t_atk + t1_pow + 0;
+                    //合計防御力
+                    s_t1_def = s_def + s1_pow + 0;
+                    t_t1_def = t_def + s1_pow + 0;
+                } else {
+                }
+            } else {
+            }
+
+            //左翼（２）
+            if (s2_type === "Ken") {
+                if (t2_type === "Ken") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 0;
+                    t_t2_atk = t_atk + t2_pow + 0;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 0;
+                    t_t2_def = t_def + s2_pow + 0;
+                } else if (t2_type === "Spe") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow - 2;
+                    t_t2_atk = t_atk + t2_pow + 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow - 1;
+                    t_t2_def = t_def + s2_pow + 1;
+                } else if (t2_type === "Bow") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 2;
+                    t_t2_atk = t_atk + t2_pow - 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 1;
+                    t_t2_def = t_def + s2_pow - 1;
+                } else {
+                }
+            } else if (s2_type === "Spe") {
+                if (t2_type === "Ken") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 2;
+                    t_t2_atk = t_atk + t2_pow - 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 1;
+                    t_t2_def = t_def + s2_pow - 1;
+                } else if (t2_type === "Spe") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 0;
+                    t_t2_atk = t_atk + t2_pow + 0;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 0;
+                    t_t2_def = t_def + s2_pow + 0;
+                } else if (t2_type === "Bow") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow - 2;
+                    t_t2_atk = t_atk + t2_pow + 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow - 1;
+                    t_t2_def = t_def + s2_pow + 1;
+                } else {
+                }
+            } else if (s2_type === "Bow") {
+                if (t2_type === "Ken") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow - 2;
+                    t_t2_atk = t_atk + t2_pow + 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow - 1;
+                    t_t2_def = t_def + s2_pow + 1;
+                } else if (t2_type === "Spe") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 2;
+                    t_t2_atk = t_atk + t2_pow - 2;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 1;
+                    t_t2_def = t_def + s2_pow - 1;
+                } else if (t2_type === "Bow") {
+                    //合計攻撃力
+                    s_t2_atk = s_atk + s2_pow + 0;
+                    t_t2_atk = t_atk + t2_pow + 0;
+                    //合計防御力
+                    s_t2_def = s_def + s2_pow + 0;
+                    t_t2_def = t_def + s2_pow + 0;
+                } else {
+                }
+            } else {
+            }
+
+            //右翼（３）
+            if (s3_type === "Ken") {
+                if (t3_type === "Ken") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 0;
+                    t_t3_atk = t_atk + t3_pow + 0;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 0;
+                    t_t3_def = t_def + s3_pow + 0;
+                } else if (t3_type === "Spe") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow - 2;
+                    t_t3_atk = t_atk + t3_pow + 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow - 1;
+                    t_t3_def = t_def + s3_pow + 1;
+                } else if (t3_type === "Bow") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 2;
+                    t_t3_atk = t_atk + t3_pow - 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 1;
+                    t_t3_def = t_def + s3_pow - 1;
+                } else {
+                }
+            } else if (s3_type === "Spe") {
+                if (t3_type === "Ken") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 2;
+                    t_t3_atk = t_atk + t3_pow - 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 1;
+                    t_t3_def = t_def + s3_pow - 1;
+                } else if (t3_type === "Spe") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 0;
+                    t_t3_atk = t_atk + t3_pow + 0;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 0;
+                    t_t3_def = t_def + s3_pow + 0;
+                } else if (t3_type === "Bow") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow - 2;
+                    t_t3_atk = t_atk + t3_pow + 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow - 1;
+                    t_t3_def = t_def + s3_pow + 1;
+                } else {
+                }
+            } else if (s3_type === "Bow") {
+                if (t3_type === "Ken") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow - 2;
+                    t_t3_atk = t_atk + t3_pow + 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow - 1;
+                    t_t3_def = t_def + s3_pow + 1;
+                } else if (t3_type === "Spe") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 2;
+                    t_t3_atk = t_atk + t3_pow - 2;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 1;
+                    t_t3_def = t_def + s3_pow - 1;
+                } else if (t3_type === "Bow") {
+                    //合計攻撃力
+                    s_t3_atk = s_atk + s3_pow + 0;
+                    t_t3_atk = t_atk + t3_pow + 0;
+                    //合計防御力
+                    s_t3_def = s_def + s3_pow + 0;
+                    t_t3_def = t_def + s3_pow + 0;
+                } else {
+                }
+            } else {
+            }
+
+            //攻防処理
+            //味方の攻撃（中央）
+            if (s_t1_atk - t_t1_def > 0) {
+                //敵にダメージ
+                if (tlifegage1 === 0) {
+                    //ダメージ１
+                    tdmg1.style.visibility = "visible";
+                    tlf11.classList.replace("tlife1-1", "tlost1-1");
+                    window.setTimeout(function () {
+                        tdmg1.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage1 === 1) {
+                    //ダメージ２
+                    tdmg1.style.visibility = "visible";
+                    tlf12.classList.replace("tlife1-2", "tlost1-2");
+                    window.setTimeout(function () {
+                        tdmg1.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage1 === 2) {
+                    //やられる
+                    tdmg1.style.visibility = "visible";
+                    tlf13.classList.replace("tlife1-3", "tlost1-3");
+                    window.setTimeout(function () {
+                        tdmg1.style.visibility = "hidden";
+                        tbusyo1.classList.add("red");
+                    }, 500);
+                }
+                tlifegage1++;
+            } else {
+            }
+            //敵の攻撃（中央）
+            if (t_t1_atk - s_t1_def > 0) {
+                //味方にダメージ
+                if (lifegage1 === 0) {
+                    //ダメージ１
+                    dmg1.style.visibility = "visible";
+                    slf11.classList.replace("life1-1", "lost1-1");
+                    window.setTimeout(function () {
+                        dmg1.style.visibility = "hidden";
+                    }, 500);
+                } else if (lifegage1 === 1) {
+                    //ダメージ２
+                    dmg1.style.visibility = "visible";
+                    slf12.classList.replace("life1-2", "lost1-2");
+                    window.setTimeout(function () {
+                        dmg1.style.visibility = "hidden";
+                    }, 500);
+                } else if (lifegage1 === 2) {
+                    //やられる
+                    dmg1.style.visibility = "visible";
+                    slf13.classList.replace("life1-3", "lost1-3");
+                    window.setTimeout(function () {
+                        dmg1.style.visibility = "hidden";
+                        busyo1.classList.add("red");
+                    }, 500);
+                }
+            } else {
+            }
+
+            //味方の攻撃（左翼）
+            if (s_t2_atk - t_t2_def > 0) {
+                //敵にダメージ
+                if (tlifegage2 === 0) {
+                    tdmg2.style.visibility = "visible";
+                    tlf21.classList.replace("tlife2-1", "tlost2-1");
+                    window.setTimeout(function () {
+                        tdmg2.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage2 === 1) {
+                    tdmg2.style.visibility = "visible";
+                    tlf22.classList.replace("tlife2-2", "tlost2-2");
+                    window.setTimeout(function () {
+                        tdmg2.style.visibility = "hidden";
+                    }, 500);
+                } else if (tlifegage2 === 2) {
+                    tdmg2.style.visibility = "visible";
+                    tlf23.classList.replace("tlife2-3", "tlost2-3");
+                    window.setTimeout(function () {
+                        tdmg2.style.visibility = "hidden";
+                        busyo2.classList.add("red");
+                    }, 500);
+                }
+            } else {
+            }
+            //敵の攻撃（左翼）
+            if (t_t2_atk - s_t2_def > 0) {
+                //味方にダメージ
+                dmg2.style.visibility = "visible";
+                slf21.classList.replace("life2-1", "lost2-1");
+                window.setTimeout(function () {
+                    dmg2.style.visibility = "hidden";
+                }, 500);
+            } else {
+            }
+
+            //味方の攻撃（右翼）
+            if (s_t3_atk - t_t3_def > 0) {
+                //右翼で敵にダメージ
+                tdmg3.style.visibility = "visible";
+                tlf31.classList.replace("tlife3-1", "tlost3-1");
+                window.setTimeout(function () {
+                    tdmg3.style.visibility = "hidden";
+                }, 500);
+            } else {
+            }
+            //敵の攻撃（右翼）
+            if (t_t3_atk - s_t3_def > 0) {
+                dmg3.style.visibility = "visible";
+                slf31.classList.replace("life3-1", "lost3-1");
+                window.setTimeout(function () {
+                    dmg3.style.visibility = "hidden";
+                }, 500);
+                //中央で味方にダメージ
+            } else {
+            }
+            //カウントアップ
+            f_flag++;
+
+        });
+    </script>
+</body>
+
+</html>
